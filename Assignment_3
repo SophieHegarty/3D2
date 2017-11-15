@@ -1,0 +1,23 @@
+AREA	Parity1, CODE, READONLY
+	IMPORT	main
+	EXPORT	start
+start 
+
+	LDR r0, = 0x16
+	LDR r7, =0
+	MOV r1, r0
+	LDR r2, =1
+	LDR r3, =0
+	LDR r4, =7
+
+loop AND r3, r1, r2
+	EOR r7, r3, r7
+	MOV r1, r1, LSR #1
+	SUBS r4, r4, #1
+	BNE loop
+
+	MOV r7, r7, LSL #7
+	ADD r0, r0, r7
+
+stop B stop
+	END
