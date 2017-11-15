@@ -1,0 +1,18 @@
+AREA	Arithmetic1, CODE, READONLY
+	IMPORT	main
+	EXPORT	start
+start
+
+     MOV     r1, #0x8 
+	LDR r2, =4		;Make second number 4
+	MUL r0, r1, r2	;Mulitiply r1 and r, save in r0
+	MUL r0, r1, r0	;Mulltiply r0 and r1, save in r0
+	LDR r2, =3		;Make r2 3
+	MUL r4, r1, r2	;Multiply r1 and r2, save in r4
+	ADD r0, r4, r0	;Add r1 and r2, save in r0
+
+
+stop	B	stop
+	END
+;
+; End of file Arithmetic1.s
