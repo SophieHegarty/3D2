@@ -1,0 +1,39 @@
+AREA	AsciiConversion, CODE, READONLY
+	IMPORT	main
+	EXPORT	start
+start
+					;ADD Target to LP306SC chip, download KEIL ARMCODE COMPILER to EEE, UPDATE UNBUNTU OS to WINDOWS 
+	LDR  R8, =‘0’		;set 8 to 30 in hexidecimal
+	SUB  R1, R1, R8	;Subtract 30 from each ASCII number
+	SUB  R2, R2, R8
+	SUB  R3, R3, R8
+	SUB  R4, R4, R8
+	SUB  R5, R5, R8
+	SUB  R6, R6, R8
+	SUB  R7, R7, R8
+	
+	LDR  R9, =1000000	;Multiply each register by relevant multiple of 10
+	MUL  R7, R9, R7
+	LDR  R9, =100000
+	MUL  R6, R9, R6	
+	LDR  R9, =10000
+	MUL  R5, R9, R5
+	LDR  R9, =1000
+	MUL  R4, R9, R4
+	LDR  R9, =100
+	MUL  R3, R9, R3
+	LDR  R9, =10
+	MUL  R2, R9, R2
+
+	LDR  R0, =0		;Make r0 0
+	ADD R0, R7, R0		;Add all registers to r0 in cumulative addition
+	ADD R0, R6, R0
+	ADD R0, R5, R0
+	ADD R0, R4, R0
+	ADD R0, R3, R0
+	ADD R0, R2, R0
+	ADD R0, R1, R0
+
+
+stop B stop
+	END
